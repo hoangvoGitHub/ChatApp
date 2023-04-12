@@ -1,61 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
-
+    >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/messageRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/divider"
+        android:layout_above="@id/inputLayout"
         android:layout_alignParentTop="true"
-        />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_10sdp"
-        android:layout_above="@id/inputLayout"/>
+        android:padding="@dimen/spacing_small" />
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/inputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:layout_marginStart="@dimen/_8sdp"
-        android:layout_toStartOf="@id/send"
-        android:background="@drawable/rounded_edit_text">
+        android:animateLayoutChanges="true"
+        android:elevation="@dimen/_2sdp"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/input_bar_spacing">
+
+
+        <ImageButton
+            android:id="@+id/more_button"
+            style="@style/Theme.ChatApp.InputBarIcon"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_more_dot" />
+
+
+        <ImageButton
+            android:id="@+id/camera_button"
+            style="@style/Theme.ChatApp.InputBarIcon"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_camera" />
+
+        <ImageButton
+            android:id="@+id/gallery_button"
+            style="@style/Theme.ChatApp.InputBarIcon"
+            android:layout_gravity="center_vertical"
+
+            android:src="@drawable/ic_menu_gallery" />
+
+        <ImageButton
+            android:id="@+id/voice_button"
+            style="@style/Theme.ChatApp.InputBarIcon"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_voice" />
 
         <EditText
             android:id="@+id/messageInput"
-            android:layout_width="match_parent"
+            style="@style/MessageEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:animateLayoutChanges="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:padding="@dimen/_5sdp" />
+
+        <ImageButton
+            android:id="@+id/send"
+            style="@style/Theme.ChatApp.InputBarIcon"
+            android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_marginBottom="0dp"
-            android:layout_toStartOf="@id/send"
-            android:hint="@string/type_a_message"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="NotSibling" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="@color/seed"
+            android:src="@drawable/baseline_send_24" />
 
-
-    <ImageButton
-        android:id="@+id/send"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:src="@drawable/baseline_send_24" />
+    </LinearLayout>
 
 
 </RelativeLayout>

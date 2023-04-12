@@ -8,4 +8,8 @@
     <dimen name="spacing_medium">16dp</dimen>
     <dimen name="spacing_small">8dp</dimen>
     <dimen name="avatar_size_medium">40dp</dimen>
+    <dimen name="message_item_padding">10dp</dimen>
+    <dimen name="z_card">0</dimen>
+    <dimen name="input_bar_spacing">4dp</dimen>
+    <dimen name="avatar_size_large">75dp</dimen>
 </resources>

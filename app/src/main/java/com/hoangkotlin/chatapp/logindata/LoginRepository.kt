@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
 import com.hoangkotlin.chatapp.logindata.model.LoggedInUser
-import com.hoangkotlin.mychatting.logindata.Result
 
 /**
  * Class that requests authentication and user information from the remote data source and
@@ -12,9 +11,10 @@ import com.hoangkotlin.mychatting.logindata.Result
  */
 
 class LoginRepository(val dataSource: LoginDataSource, private val context: Context) {
+    private val logInReference: SharedPreferences =
+        context.getSharedPreferences("logged_in_user", Context.MODE_PRIVATE)
 
 
-    private val logInReference: SharedPreferences = context.getSharedPreferences("logged_in_user", Context.MODE_PRIVATE)
     // in-memory cache of the loggedInUser object
     var user: LoggedInUser? = null
         private set
@@ -28,10 +28,11 @@ class LoginRepository(val dataSource: LoginDataSource, private val context: Cont
         val username = logInReference.getString("username", null)
         val password = logInReference.getString("password", null)
         val displayName = logInReference.getString("displayName", null)
+        val uid = logInReference.getString("uid", null)
         Log.d("Login Repository", "Test${username} and $password $displayName")
-        user = if (username != null && password != null ) {
+        user = if (username != null && password != null && displayName != null && uid != null) {
             Log.d("Login Repository", "Test Set user")
-            LoggedInUser(username, password, "displayName!!")
+            LoggedInUser(username, password, displayName, uid)
         } else {
             null
         }
@@ -49,11 +50,23 @@ class LoginRepository(val dataSource: LoginDataSource, private val context: Cont
 
         if (result is Result.Success) {
             setLoggedInUser(result.data)
-            Log.d("Login Repository", "v${result.data.username} and ${result.data.displayName}")
+            saveSharedReferences()
         }
 
         return result
     }
+
+    private fun saveSharedReferences() {
+        val sharedPreferences =
+            context.getSharedPreferences("logged_in_user", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("username", user!!.username)
+        editor.putString("password", user!!.password)
+        editor.putString("displayName", user!!.displayName)
+        editor.putString("uid", user!!.uid)
+        editor.apply()
+    }
+
 
     private fun setLoggedInUser(loggedInUser: LoggedInUser) {
         this.user = loggedInUser

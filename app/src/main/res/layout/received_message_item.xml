@@ -1,34 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="@dimen/_4sdp">
+    android:animateLayoutChanges="true">
+
+    <io.getstream.avatarview.AvatarView
+        android:id="@+id/avatar_image"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        app:avatarViewShape="circle"
+        app:layout_constraintBottom_toBottomOf="@id/message"
+        app:layout_constraintEnd_toStartOf="@id/divider"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Space
+        android:id="@+id/divider"
+        android:layout_width="@dimen/_10sdp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/avatar_image"
+        app:layout_constraintEnd_toStartOf="@id/message"
+        app:layout_constraintStart_toEndOf="@id/avatar_image" />
 
     <TextView
         android:id="@+id/message"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/background_received_message"
-        android:padding="@dimen/_12sdp"
-        android:text="@string/test_message"
+        android:elevation="@dimen/_5sdp"
+        android:maxWidth="@dimen/_200sdp"
         android:minWidth="@dimen/_60sdp"
-        android:textColor="@color/receivedMessageText"
-        android:textSize="@dimen/_13sdp"
-
-        app:layout_constraintStart_toStartOf="parent"
+        android:padding="@dimen/message_item_padding"
+        android:text="@string/test_message"
+        app:layout_constraintStart_toEndOf="@id/divider"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.8" />
 
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="@id/message"
+        app:layout_constraintTop_toBottomOf="@id/message" />
+
     <TextView
         android:id="@+id/textDateTime"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_4sdp"
         android:text="@string/test_date"
-        android:textColor="@color/receivedMessageText"
+        android:textColor="@color/md_theme_light_onPrimaryContainer"
         android:textSize="@dimen/_10sdp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/message"
         app:layout_constraintTop_toBottomOf="@id/message" />
 
 

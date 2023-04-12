@@ -1,19 +1,31 @@
 package com.hoangkotlin.chatapp.testdata.message
 
-import androidx.room.Embedded
 import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.hoangkotlin.chatapp.data.model.User
+import com.hoangkotlin.chatapp.testdata.user.User
+import com.hoangkotlin.chatapp.testdata.channel.ChatChannel
 import com.hoangkotlin.chatapp.utils.SyncStatus
 
 @Entity(
-    tableName = MESSAGE_ENTITY_TABLE_NAME_TEST
+    tableName = MESSAGE_ENTITY_TABLE_NAME_TEST,
+    foreignKeys = [ForeignKey(
+        entity = User::class,
+        parentColumns = ["uid"],
+        childColumns = ["uid"],
+    ),
+    ForeignKey(entity = ChatChannel::class,
+        parentColumns = ["cid"],
+        childColumns = ["cid"]
+        )],
+    indices = [Index("uid"), Index("cid")]
+
 )
 data class ChatMessage(
     @PrimaryKey val id: String,
     val cid: String,
-    @Embedded
-    val sender: User,
+    val uid: String,
     val content: String,
     val replyToMessage: String?,
     val type: String = "message",
@@ -23,8 +35,9 @@ data class ChatMessage(
     val updatedAt: Long = 0,
     val updatedLocallyAt: Long = 0,
     val deletedAt: Long = 0,
-    val syncStatus: SyncStatus = SyncStatus.COMPLETED,
+    val syncStatus: SyncStatus = SyncStatus.IN_PROGRESS,
 ) {
+    constructor() : this("", "", "", "", "")
 }
 
 const val MESSAGE_ENTITY_TABLE_NAME_TEST = "chat_message_table"

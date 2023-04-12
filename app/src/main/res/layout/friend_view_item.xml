@@ -13,49 +13,34 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        style="@style/Theme.ChatApp.ChannelView"
         android:padding="5dp">
-
-        <!--        <ImageView-->
-        <!--            android:id="@+id/avatar_image"-->
-        <!--            android:layout_width="75dp"-->
-        <!--            android:layout_height="75dp"-->
-
-        <!--            android:contentDescription="@null"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent"-->
-        <!--            app:srcCompat="@drawable/avatar"-->
-        <!--            tools:srcCompat="@drawable/avatar" />-->
 
         <io.getstream.avatarview.AvatarView
             android:id="@+id/avatar_image"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            app:avatarViewBorderColor="@color/sentMessage"
-            app:avatarViewBorderWidth="3dp"
-            app:avatarViewIndicatorBorderColor="@color/white"
-            app:avatarViewIndicatorBorderSizeCriteria="10"
-            app:avatarViewIndicatorColor="@color/sentMessage"
+            android:layout_width="@dimen/avatar_size_large"
+            android:layout_height="@dimen/avatar_size_large"
+            app:avatarViewIndicatorColor="@android:color/holo_green_light"
             app:avatarViewIndicatorEnabled="true"
             app:avatarViewIndicatorPosition="bottomRight"
-            app:avatarViewIndicatorSizeCriteria="9"
-            app:avatarViewInitialsTextStyle="bold"
             app:avatarViewShape="circle"
+            android:scaleType="fitCenter"
+            app:avatarViewBorderWidth="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_person" />
 
         <TextView
             android:id="@+id/user_name"
-
+            android:textColor="?android:textColorSecondary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:padding="8dp"
-            android:text="Vo Tran Hoang"
-            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="@string/name_test"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/avatar_image"
@@ -68,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:padding="8dp"
-            android:text="I'm good now"
+            android:text="@string/status"
             android:textColor="?android:textColorSecondary"
             app:layout_constraintStart_toEndOf="@+id/avatar_image"
             app:layout_constraintTop_toBottomOf="@+id/user_name" />

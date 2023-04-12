@@ -3,32 +3,68 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/_4sdp">
+    android:layout_gravity="end"
+    android:paddingBottom="@dimen/_5sdp"
+    android:animateLayoutChanges="true"
+    >
 
     <TextView
         android:id="@+id/message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/background_sent_message"
-        android:padding="@dimen/_12sdp"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_13sdp"
+        android:elevation="@dimen/_5sdp"
         android:minWidth="@dimen/_60sdp"
+        android:maxWidth="@dimen/_200sdp"
+        android:padding="@dimen/message_item_padding"
         android:text="@string/test_message"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/md_theme_light_onPrimaryContainer"
+        app:layout_constraintEnd_toStartOf="@id/divider"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintWidth_percent="0.8"
+        />
 
     <TextView
         android:id="@+id/textDateTime"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_4sdp"
         android:text="@string/test_date"
-        android:textColor="@color/receivedMessageText"
+        android:textColor="@color/md_theme_light_onPrimaryContainer"
         android:textSize="@dimen/_10sdp"
+        app:layout_constraintEnd_toStartOf="@id/message_status"
+        app:layout_constraintTop_toBottomOf="@id/message"/>
+<!--        android:stateListAnimator="@animator/comment_selection"-->
+
+
+    <Space
+        android:id="@+id/divider"
+        android:layout_width="@dimen/_10sdp"
+        android:layout_height="@dimen/_15sdp"
+        app:layout_constraintEnd_toStartOf="@id/message_status"
+        app:layout_constraintBottom_toBottomOf="@id/message"
+        />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/message"
+        app:layout_constraintStart_toStartOf="@id/message"
+        />
+
+    <ImageView
+        android:id="@+id/message_status"
+        android:layout_width="@dimen/_15sdp"
+        android:layout_height="@dimen/_15sdp"
+        android:background="@drawable/pending_icon"
+        app:layout_constraintBottom_toBottomOf="@id/message"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/message" />
+
+
+
+
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,25 +1,45 @@
 package com.hoangkotlin.chatapp.utils
 
-//import com.hoangkotlin.chatapp.data.domain.DomainMessage
-import com.hoangkotlin.chatapp.data.model.ChatMessage
-import com.hoangkotlin.chatapp.data.model.MemberEntity
-import com.hoangkotlin.chatapp.data.model.User
+//import com.hoangkotlin.chatapp.test_data.domain.DomainMessage
 
-//fun ChatMessage.asDomainMessage(): DomainMessage {
-//    return DomainMessage(
-//        id = this.id,
-//        cid = this.cid,
-//        sender = this.uid,
-//        content = this.content,
-//        type = this.type,
-//        replyToMessage = this.replyToMessage,
-//        replyCount = this.replyCount,
-//        createdAt = this.createdAt,
-//        createdLocallyAt = this.createdLocallyAt,
-//        updatedAt = this.updatedAt,
-//        deletedAt = this.deletedAt
-//    )
-//}
+import com.hoangkotlin.chatapp.data.domain.DomainMessage
+import com.hoangkotlin.chatapp.data.model.MemberEntity
+import com.hoangkotlin.chatapp.testdata.user.User
+import com.hoangkotlin.chatapp.logindata.model.LoggedInUser
+import com.hoangkotlin.chatapp.testdata.message.ChatMessage
+
+fun ChatMessage.asDomainMessage(): DomainMessage {
+    return DomainMessage(
+        id = this.id,
+        cid = this.cid,
+        uid = this.uid,
+        content = this.content,
+        type = this.type,
+        replyToMessage = this.replyToMessage,
+        replyCount = this.replyCount,
+        createdAt = this.createdAt,
+        createdLocallyAt = this.createdLocallyAt,
+        updatedAt = this.updatedAt,
+        deletedAt = this.deletedAt
+    )
+}
+
+fun DomainMessage.asMessageEntity(): ChatMessage {
+    return ChatMessage(
+        id = this.id,
+        cid = this.cid,
+        uid = this.uid,
+        content = this.content,
+        type = this.type,
+        replyToMessage = this.replyToMessage,
+        replyCount = this.replyCount,
+        createdAt = this.createdAt,
+        createdLocallyAt = this.createdLocallyAt,
+        updatedAt = this.updatedAt,
+        deletedAt = this.deletedAt,
+        syncStatus = SyncStatus.COMPLETED
+    )
+}
 
 fun User.asMemberEntity(createAt: Long): MemberEntity {
     return MemberEntity(
@@ -31,6 +51,14 @@ fun User.asMemberEntity(createAt: Long): MemberEntity {
         unreadMessages = 0,
         lastMessageSeenDate = null,
         deletedAt = null
+    )
+}
+
+fun LoggedInUser.asUser(): User {
+    return User(
+        uid = this.uid,
+        name = this.displayName,
+        email = this.username
     )
 }
 

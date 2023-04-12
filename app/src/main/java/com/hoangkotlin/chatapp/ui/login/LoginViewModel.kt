@@ -8,7 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.hoangkotlin.chatapp.logindata.LoginRepository
 
 import com.hoangkotlin.chatapp.R
-import com.hoangkotlin.mychatting.logindata.Result
+import com.hoangkotlin.chatapp.logindata.Result
+import com.hoangkotlin.chatapp.logindata.model.LoggedInUser
 import kotlinx.coroutines.launch
 
 class LoginViewModel(val loginRepository: LoginRepository) : ViewModel() {
@@ -32,6 +33,8 @@ class LoginViewModel(val loginRepository: LoginRepository) : ViewModel() {
             }
         }
     }
+
+
 
     fun loginDataChanged(username: String, password: String) {
         if (!isUserNameValid(username)) {

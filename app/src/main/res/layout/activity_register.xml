@@ -11,15 +11,16 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".ui.register.RegisterActivity">
 
-    <ImageButton
+    <io.getstream.avatarview.AvatarView
         android:id="@+id/addProfileImage"
         android:layout_width="@dimen/_130sdp"
         android:layout_height="@dimen/_130sdp"
-        android:src="@android:drawable/ic_menu_search"
+        android:src="@drawable/ic_person"
         app:layout_constraintBottom_toTopOf="@id/name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:avatarViewShape="circle"/>
 
     <EditText
         android:id="@+id/name"

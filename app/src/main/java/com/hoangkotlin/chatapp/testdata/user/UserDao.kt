@@ -1,4 +1,4 @@
-package com.hoangkotlin.chatapp.data.model
+package com.hoangkotlin.chatapp.testdata.user
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -12,7 +12,7 @@ interface UserDao {
     fun getAllUsers(currentUserId:String): Flow<List<User>>
 
     @Query("SELECT * FROM $USER_ENTITY_TABLE_NAME WHERE uid =:userUid")
-    fun getByUid(userUid: String): Flow<List<User>>
+    fun getByUid(userUid: String): User
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertAllUsers(users: List<User>)

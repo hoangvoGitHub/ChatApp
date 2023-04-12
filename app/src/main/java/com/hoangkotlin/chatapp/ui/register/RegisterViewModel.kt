@@ -1,6 +1,7 @@
 package com.hoangkotlin.chatapp.ui.register
 
 import android.content.ContentValues
+import android.net.Uri
 import android.util.Log
 import android.util.Patterns
 import androidx.lifecycle.LiveData
@@ -9,15 +10,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import com.hoangkotlin.chatapp.R
-import com.hoangkotlin.chatapp.firebase.utils.Reference
-import com.hoangkotlin.chatapp.data.model.User
-import com.hoangkotlin.chatapp.logindata.model.Relationship
+import com.hoangkotlin.chatapp.firebase.utils.RealtimeReference
+import com.hoangkotlin.chatapp.firebase.utils.StorageReference
+import com.hoangkotlin.chatapp.testdata.user.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -29,6 +28,9 @@ class RegisterViewModel : ViewModel() {
 
     private val _registerResult = MutableLiveData<Boolean>()
     val registerResult: LiveData<Boolean> = _registerResult
+
+
+    var imageUri: Uri? = null
 
 
     fun register(username: String, password: String, name: String) {
@@ -44,10 +46,8 @@ class RegisterViewModel : ViewModel() {
                         val profileUpdates =
                             UserProfileChangeRequest.Builder().setDisplayName(name).build()
                         currentUser!!.updateProfile(profileUpdates)
-                        Log.d("Write data", "Start")
-                        addUserToDataBase(username, currentUser.uid, name)
-                        //addRelationship()
-                        Log.d("Register", "End")
+                        addUserToDataBase(currentUser.email!!, currentUser.uid, name)
+                        uploadProfileImage(currentUser.uid)
 
                     } else {
                         Log.w(ContentValues.TAG, "createUserWithEmail:failure", task.exception)
@@ -63,8 +63,10 @@ class RegisterViewModel : ViewModel() {
             Log.d("add user view model scope launch", "Launch")
 
             val database = Firebase.database
-            val userRef = database.getReference(Reference.USER)
+            val userRef = database.getReference(RealtimeReference.USER)
+
             val newDomainUser = User(uid, name, username)
+
             try {
                 userRef.child(uid).setValue(newDomainUser)
             } catch (e: java.lang.Exception) {
@@ -74,30 +76,21 @@ class RegisterViewModel : ViewModel() {
         }
     }
 
-    private fun addRelationship() {
-        viewModelScope.launch {
-            val database = Firebase.database
-            val userRef = database.getReference(Reference.USER)
-            val relationshipRef = database.getReference(Reference.RELATIONSHIP)
-            userRef.addListenerForSingleValueEvent(object :
-                ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    for (snapshot in dataSnapshot.children) {
-                        val retrievedDomainUser = snapshot.getValue(User::class.java)
-                        relationshipRef.push().setValue(
-                            Relationship(
-                                retrievedDomainUser!!.uid,
-                                FirebaseAuth.getInstance().currentUser!!.uid,
-                                true
-                            )
-                        )
+    private fun uploadProfileImage(userUid: String) {
+        if (imageUri != null) {
+            viewModelScope.launch {
+                val storageReference = Firebase.storage;
+                val ref = storageReference.reference
+                    .child("${StorageReference.PROFILE_IMAGE}/$userUid")
+                try {
+                    if (imageUri != null) {
+                        ref.putFile(imageUri!!)
                     }
+                } catch (e: Exception) {
+                    Log.d("Write Data to Database", e.message.toString())
+                    Log.d("Write Data to Database", "Error")
                 }
-
-                override fun onCancelled(databaseError: DatabaseError) {
-                    Log.d("Relationship", "Database error")
-                }
-            })
+            }
         }
     }
 

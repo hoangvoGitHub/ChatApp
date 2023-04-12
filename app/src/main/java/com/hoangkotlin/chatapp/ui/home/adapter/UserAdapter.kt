@@ -6,22 +6,35 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import com.hoangkotlin.chatapp.R
-import com.hoangkotlin.chatapp.data.model.User
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
+import com.hoangkotlin.chatapp.testdata.user.User
 import com.hoangkotlin.chatapp.databinding.FriendViewItemBinding
+import com.hoangkotlin.chatapp.firebase.utils.StorageReference
+import io.getstream.avatarview.coil.loadImage
 
 
 class UserAdapter(private val onItemClicked: (User) -> Unit) :
-    ListAdapter<User, UserAdapter.UsersViewHolder>(DiffCallback) {
+            ListAdapter<User, UserAdapter.UsersViewHolder>(DiffCallback) {
 
-    private lateinit var context: Context
+                private lateinit var context: Context
 
-    class UsersViewHolder(private var binding: FriendViewItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(user: User) {
-            binding.userName.text = user.name
-            binding.avatarImage.load(R.drawable.avatar)
+                class UsersViewHolder(private var binding: FriendViewItemBinding) :
+                    RecyclerView.ViewHolder(binding.root) {
+                    fun bind(user: User) {
+                        binding.userName.text = user.name
+
+                        val storageReference = Firebase.storage;
+                        val ref = storageReference.reference
+                            .child(
+                                "${StorageReference.PROFILE_IMAGE}/${user.uid}"
+                )
+            ref.downloadUrl.addOnCompleteListener {
+                if (it.isSuccessful && it.result != null) {
+                    binding.avatarImage.loadImage(it.result)
+                }
+            }
+
         }
     }
 

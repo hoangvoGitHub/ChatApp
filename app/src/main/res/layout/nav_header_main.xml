@@ -1,34 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Theme.ChatApp.HeaderView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:fitsSystemWindows="true">
+    android:elevation="5dp"
+    android:fitsSystemWindows="true"
+    >
 
-    <ImageView
+    <io.getstream.avatarview.AvatarView
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
         android:id="@+id/profileImageView"
-        android:layout_width="@dimen/avatar_size_medium"
-        android:layout_height="@dimen/avatar_size_medium"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:contentDescription="@string/nav_header_desc"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/avatar"
+        app:avatarViewBorderWidth="0dp"
+        app:avatarViewShape="circle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher_round" />
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        style="@style/Theme.ChatApp.HeaderEmailTextView"
+        app:layout_constraintHorizontal_weight="1"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_small"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:maxLines="2"
+        android:fitsSystemWindows="true"
+        android:textAlignment="gravity"
+        android:breakStrategy="balanced"
+        android:text="Hi, I'm good now"
+        app:layout_constraintBottom_toBottomOf="@id/profileImageView"
+        app:layout_constraintStart_toEndOf="@id/profileImageView"
+        app:layout_constraintTop_toTopOf="@id/profileImageView" />
 
     <TextView
         android:id="@+id/nameTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/spacing_medium"
-        android:paddingEnd="@dimen/spacing_medium"
-        android:singleLine="true"
-        android:textAppearance="@style/TextAppearance.HeadlineBold"
-        app:layout_constraintBottom_toBottomOf="@id/profileImageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/profileImageView"
-        app:layout_constraintTop_toTopOf="@id/profileImageView" />
+        style="@style/Theme.ChatApp.HeaderNameTextView"
+        android:paddingVertical="@dimen/spacing_small"
+        android:text="@string/user_name"
+        app:layout_constraintStart_toStartOf="@id/profileImageView"
+        app:layout_constraintTop_toBottomOf="@id/profileImageView" />
+
+    <TextView
+        android:id="@+id/emailTextView"
+        style="@style/Theme.ChatApp.HeaderEmailTextView"
+        android:text="@string/prompt_email"
+        android:paddingBottom="@dimen/spacing_medium"
+        app:layout_constraintStart_toStartOf="@id/nameTextView"
+        app:layout_constraintTop_toBottomOf="@id/nameTextView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

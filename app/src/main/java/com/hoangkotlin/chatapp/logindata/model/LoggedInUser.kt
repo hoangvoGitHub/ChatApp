@@ -6,7 +6,8 @@ package com.hoangkotlin.chatapp.logindata.model
 data class LoggedInUser(
     val username: String,
     val password: String,
-    val displayName: String
+    val displayName: String,
+    val uid:String
 ) {
 
 }

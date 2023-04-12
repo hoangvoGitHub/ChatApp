@@ -6,7 +6,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.hoangkotlin.chatapp.logindata.model.LoggedInUser
-import com.hoangkotlin.mychatting.logindata.Result
 import kotlinx.coroutines.tasks.await
 import java.io.IOException
 
@@ -16,17 +15,16 @@ import java.io.IOException
 class LoginDataSource {
     private val auth = FirebaseAuth.getInstance()
 
-    @SuppressLint("LogNotTimber")
     suspend fun login(username: String, password: String): Result<LoggedInUser> {
         try {
             val firebaseResult = auth.signInWithEmailAndPassword(username, password).await()
 
             val user = LoggedInUser(
-                firebaseResult.user!!.uid,
+                username,
                 password,
-                firebaseResult.user!!.displayName ?: ""
+                firebaseResult.user!!.displayName!!,
+                firebaseResult.user!!.uid
             )
-            Log.d("Loggin User", "${user.username} and ${user.displayName}")
             return Result.Success(user)
 
         } catch (e: FirebaseAuthInvalidUserException) {
