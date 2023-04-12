@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Typography -->
+    <style name="TextAppearance" parent="TextAppearance.AppCompat.Body2" />
+
+    <style name="TextAppearance.CaptionBold">
+        <item name="fontFamily">@font/stream_roboto_bold</item>
+        <item name="android:fontFamily">@font/stream_roboto_bold</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/text_color_primary</item>
+        <item name="android:textDirection">locale</item>
+    </style>
+
+    <style name="TextAppearance.Footnote">
+        <item name="fontFamily">@font/stream_roboto_regular</item>
+        <item name="android:fontFamily">@font/stream_roboto_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_color_secondary</item>
+        <item name="android:textDirection">locale</item>
+    </style>
+
+    <style name="TextAppearance.FootnoteBold">
+        <item name="fontFamily">@font/stream_roboto_medium</item>
+        <item name="android:fontFamily">@font/stream_roboto_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_color_primary</item>
+        <item name="android:textDirection">locale</item>
+    </style>
+
+    <style name="TextAppearance.Caption1Bold">
+        <item name="fontFamily">@font/stream_roboto_bold</item>
+        <item name="android:fontFamily">@font/stream_roboto_bold</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_color_primary</item>
+        <item name="android:textDirection">locale</item>
+    </style>
+
+    <style name="TextAppearance.Body">
+        <item name="fontFamily">@font/stream_roboto_medium</item>
+        <item name="android:fontFamily">@font/stream_roboto_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_color_primary</item>
+        <item name="android:textDirection">locale</item>
+    </style>
+
+    <style name="TextAppearance.BodyBold">
+        <item name="fontFamily">@font/stream_roboto_bold</item>
+        <item name="android:fontFamily">@font/stream_roboto_bold</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_color_primary</item>
+        <item name="android:textDirection">locale</item>
+    </style>
+
+    <style name="TextAppearance.Headline">
+        <item name="fontFamily">@font/stream_roboto_medium</item>
+        <item name="android:fontFamily">@font/stream_roboto_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_color_primary</item>
+        <item name="android:textDirection">locale</item>
+    </style>
+
+    <style name="TextAppearance.HeadlineBold">
+        <item name="fontFamily">@font/stream_roboto_bold</item>
+        <item name="android:fontFamily">@font/stream_roboto_bold</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_color_primary</item>
+        <item name="android:textDirection">locale</item>
+    </style>
+
+    <style name="TextAppearance.Title">
+        <item name="fontFamily">@font/stream_roboto_bold</item>
+        <item name="android:fontFamily">@font/stream_roboto_bold</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/text_color_primary</item>
+        <item name="android:textDirection">locale</item>
+    </style>
+
+    <style name="TextAppearance.MediaActivityHeaderTitle" parent="TextAppearance.BodyBold">
+        <item name="android:textColor">@color/ui_literal_white</item>
+        <item name="android:textDirection">locale</item>
+    </style>
+
+</resources>

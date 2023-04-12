@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">ChatApp</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="action_register">register</string>
+    <string name="prompt_confirm_password">Confirm Password</string>
+    <string name="prompt_name">Name</string>
+    <string name="password_not_match">Password not match!</string>
+    <string name="name_error">Name cannot be empty</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="msg_token_fmt" translatable="false">FCM registration Token: %s</string>
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <!--
+        This is the name that users will see when interacting with this channel.
+        It should describe the category of notifications that will be sent through this channel
+     -->
+    <!-- [START fcm_default_icon_string] -->
+    <string name="default_notification_channel_name" translatable="true">Weather</string>
+    <!-- [END fcm_default_icon_string] -->
+    <string name="msg_subscribe_failed">Failed to subscribe to weather topic</string>
+    <string name="fcm_message">FCM Message</string>
+    <string name="type_a_message">  Type a message</string>
+    <string name="settings">Settings</string>
+    <string name="done">Done</string>
+    <string name="search_title">Search</string>
+    <string name="test_message">This is a message</string>
+    <string name="test_date">today</string>
+    <string name="log_out">Log out</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="nav_header_title">Application User</string>
+    <string name="nav_header_subtitle">applicationuser@gmail.com</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slide Show</string>
+</resources>
