@@ -25,8 +25,7 @@ data class Channel(
     val createdByUserId: String = "",
     val lastMessageId: String = "",
     val lastMessageAt: Long = 0L,
-    @Embedded
-//    val members: List<MemberEntity> = emptyList(),
+    val members: Map<String,MemberEntity>,
     val createdAt: Long = 0L,
     val updatedAt: Long = 0L,
     val deletedAt: Long = 0L
