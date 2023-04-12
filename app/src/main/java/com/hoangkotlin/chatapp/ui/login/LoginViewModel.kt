@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.hoangkotlin.chatapp.logindata.LoginRepository
 
 import com.hoangkotlin.chatapp.R
-import com.hoangkotlin.mychatting.logindata.Result
+import com.hoangkotlin.chatapp.logindata.Result
 import kotlinx.coroutines.launch
 
 class LoginViewModel(val loginRepository: LoginRepository) : ViewModel() {

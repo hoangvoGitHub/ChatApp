@@ -1,4 +1,4 @@
-package com.hoangkotlin.mychatting.logindata
+package com.hoangkotlin.chatapp.logindata
 
 /**
  * A generic class that holds a value with its loading status.

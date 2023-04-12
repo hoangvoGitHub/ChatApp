@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
 import com.hoangkotlin.chatapp.logindata.model.LoggedInUser
-import com.hoangkotlin.mychatting.logindata.Result
 
 /**
  * Class that requests authentication and user information from the remote data source and

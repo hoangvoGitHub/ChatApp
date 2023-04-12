@@ -8,13 +8,17 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.hoangkotlin.chatapp.data.database.AppDatabase
 import com.hoangkotlin.chatapp.data.model.*
 import com.hoangkotlin.chatapp.firebase.utils.Reference
+import com.hoangkotlin.chatapp.testdata.channel.ChatChannel
+import com.hoangkotlin.chatapp.testdata.database.TestAppDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import com.hoangkotlin.chatapp.logindata.Result
+import com.hoangkotlin.chatapp.testdata.membership.Membership
+import java.io.IOException
 
 
 class FirebaseService {
@@ -22,28 +26,21 @@ class FirebaseService {
     companion object {
         private val database = Firebase.database
         fun fetchUserList(
-            localDatabase: AppDatabase,
+            localDatabase: TestAppDatabase,
             lifecycleScope: CoroutineScope,
             callback: suspend (List<User>) -> Unit
         ) {
             database.getReference(Reference.USER)
                 .addValueEventListener(object : ValueEventListener {
-                    @SuppressLint("LogNotTimber")
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                         val dataList = dataSnapshot.children.mapNotNull { snapshot ->
                             snapshot.getValue(User::class.java)
                         }
-
-                        val newData = dataList.filterNot { data ->
-                            localDatabase.userDao().getByUid(data.uid) != null
-                        }
-
-
                         lifecycleScope.launch {
                             withContext(Dispatchers.IO) {
                                 Log.d("GetList", "List size ${dataList.size}")
-                                localDatabase.userDao().deleteAllUsers()
+                                localDatabase.chatUserDao().deleteAllUsers()
                                 callback(dataList)
                             }
                         }
@@ -54,9 +51,7 @@ class FirebaseService {
                     @SuppressLint("LogNotTimber")
                     override fun onCancelled(databaseError: DatabaseError) {
                         Log.w(
-                            ContentValues.TAG,
-                            "loadPost:onCancelled",
-                            databaseError.toException()
+                            ContentValues.TAG, "loadPost:onCancelled", databaseError.toException()
                         )
                     }
                 })
@@ -124,6 +119,45 @@ class FirebaseService {
 //                }
         }
 
+        fun createNewChannel(
+            userIds: List<String>, callback: (Result<ChatChannel>) -> Unit
+        ) {
+            val ref = database.reference
+            val createAt = System.currentTimeMillis()
+            val cidKey = database.getReference(Reference.CHANNEL).push().key
+            val newChannel = ChatChannel(
+                cid = cidKey!!,
+                type = "messaging",
+                name = "",
+                createdByUserId = userIds[0],
+                createdAt = createAt
+            )
+
+            val childUpdate = HashMap<String, Any>()
+            childUpdate["${Reference.CHANNEL}/$cidKey"] = newChannel
+            userIds.forEachIndexed { index, uid ->
+                val key = database.getReference(Reference.MEMBERSHIP).push().key
+                val role = "host".takeIf { index == 0 } ?: "member"
+                val newMembership =
+                    Membership(
+                        id = key!!,
+                        cid = cidKey,
+                        uid = uid,
+                        createdAt = createAt,
+                        role = role
+                    )
+
+                childUpdate["${Reference.MEMBERSHIP}/$key"] = newMembership
+            }
+            ref.updateChildren(childUpdate).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    callback(Result.Success(newChannel))
+                } else {
+                    callback(Result.Error(IOException("Error create channel", task.exception)))
+                }
+            }
+
+        }
 
 
     }

@@ -5,6 +5,7 @@ import androidx.room.withTransaction
 import com.hoangkotlin.chatapp.data.database.AppDatabase
 import com.hoangkotlin.chatapp.data.model.User
 import com.hoangkotlin.chatapp.firebase.FirebaseService
+import com.hoangkotlin.chatapp.testdata.database.TestAppDatabase
 import com.hoangkotlin.chatapp.utils.networkBoundResource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -12,7 +13,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 class UserRepository(
-    private val database: AppDatabase,
+    private val database: TestAppDatabase,
     private val lifecycleScope: CoroutineScope
 ) {
 
@@ -24,14 +25,14 @@ class UserRepository(
             FirebaseService.fetchUserList(database, lifecycleScope){
                 Log.d("GetList In Insert all", "List size ${it.size}")
 
-                database.userDao().insertAllUsers(it)
+                database.chatUserDao().insertAllUsers(it)
             }
         }
     }
 
 
     fun retrieveUsersFromLocal(cuid:String): Flow<List<User>> {
-        return database.userDao().getAllUsers(cuid)
+        return database.chatUserDao().getAllUsers(cuid)
     }
 
 

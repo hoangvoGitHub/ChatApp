@@ -7,5 +7,6 @@ class Reference {
         const val CONVERSATION = "conversation_version2"
         const val CHANNEL = "channel_version2"
         const val MESSAGE = "message_version2"
+        const val MEMBERSHIP = "membership"
     }
 }

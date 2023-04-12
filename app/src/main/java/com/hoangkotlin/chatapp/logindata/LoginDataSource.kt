@@ -6,7 +6,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.hoangkotlin.chatapp.logindata.model.LoggedInUser
-import com.hoangkotlin.mychatting.logindata.Result
 import kotlinx.coroutines.tasks.await
 import java.io.IOException
 
