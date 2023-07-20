@@ -2,8 +2,6 @@ package com.hoangkotlin.chatapp.ui.home.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.transition.TransitionManager
-import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.hoangkotlin.chatapp.R
 import com.hoangkotlin.chatapp.databinding.ReceivedMessageItemBinding
 import com.hoangkotlin.chatapp.databinding.SentMessageItemBinding
-import com.hoangkotlin.chatapp.testdata.message.ChatMessage
+import com.hoangkotlin.chatapp.data.local.message.ChatMessage
 import com.hoangkotlin.chatapp.utils.MessageViewType
 import com.hoangkotlin.chatapp.utils.SyncStatus
 import io.getstream.avatarview.coil.loadImage

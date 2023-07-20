@@ -16,7 +16,7 @@ import com.google.firebase.storage.ktx.storage
 import com.hoangkotlin.chatapp.R
 import com.hoangkotlin.chatapp.firebase.utils.RealtimeReference
 import com.hoangkotlin.chatapp.firebase.utils.StorageReference
-import com.hoangkotlin.chatapp.testdata.user.User
+import com.hoangkotlin.chatapp.data.local.user.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

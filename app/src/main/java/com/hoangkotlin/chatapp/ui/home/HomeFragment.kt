@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.hoangkotlin.chatapp.ChatApplication
 import com.hoangkotlin.chatapp.ui.MainActivity
 import com.hoangkotlin.chatapp.databinding.FragmentHomeBinding
-import com.hoangkotlin.chatapp.testdata.user.User
+import com.hoangkotlin.chatapp.data.local.user.User
 import com.hoangkotlin.chatapp.ui.home.adapter.UserAdapter
 import com.hoangkotlin.chatapp.utils.asUser
 import kotlinx.coroutines.launch

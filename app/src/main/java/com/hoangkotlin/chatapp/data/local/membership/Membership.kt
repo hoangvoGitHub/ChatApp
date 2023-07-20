@@ -1,11 +1,11 @@
-package com.hoangkotlin.chatapp.testdata.membership
+package com.hoangkotlin.chatapp.data.local.membership
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.hoangkotlin.chatapp.testdata.user.User
-import com.hoangkotlin.chatapp.testdata.channel.ChatChannel
+import com.hoangkotlin.chatapp.data.local.user.User
+import com.hoangkotlin.chatapp.data.local.channel.ChatChannel
 
 @Entity(
     tableName = MEMBERSHIP_ENTITY_TABLE_NAME,

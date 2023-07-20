@@ -12,9 +12,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import java.io.IOException
 import com.hoangkotlin.chatapp.logindata.Result
-import com.hoangkotlin.chatapp.testdata.channel.ChatChannel
-import com.hoangkotlin.chatapp.testdata.message.ChatMessage
-import com.hoangkotlin.chatapp.testdata.user.User
+import com.hoangkotlin.chatapp.data.local.channel.ChatChannel
+import com.hoangkotlin.chatapp.data.local.message.ChatMessage
+import com.hoangkotlin.chatapp.data.local.user.User
 import com.hoangkotlin.chatapp.utils.SyncStatus
 import kotlinx.coroutines.flow.flowOf
 

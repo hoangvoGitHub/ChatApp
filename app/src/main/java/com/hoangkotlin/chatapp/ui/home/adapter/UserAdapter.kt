@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import com.hoangkotlin.chatapp.testdata.user.User
+import com.hoangkotlin.chatapp.data.local.user.User
 import com.hoangkotlin.chatapp.databinding.FriendViewItemBinding
 import com.hoangkotlin.chatapp.firebase.utils.StorageReference
 import io.getstream.avatarview.coil.loadImage

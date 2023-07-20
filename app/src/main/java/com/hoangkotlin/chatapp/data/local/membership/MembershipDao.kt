@@ -1,4 +1,4 @@
-package com.hoangkotlin.chatapp.testdata.membership
+package com.hoangkotlin.chatapp.data.local.membership
 
 import androidx.room.Dao
 import androidx.room.Insert

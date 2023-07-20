@@ -2,8 +2,8 @@ package com.hoangkotlin.chatapp.repository
 
 import android.util.Log
 import com.hoangkotlin.chatapp.firebase.FirebaseService
-import com.hoangkotlin.chatapp.testdata.database.TestAppDatabase
-import com.hoangkotlin.chatapp.testdata.user.User
+import com.hoangkotlin.chatapp.data.local.database.TestAppDatabase
+import com.hoangkotlin.chatapp.data.local.user.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

@@ -1,11 +1,11 @@
-package com.hoangkotlin.chatapp.testdata.message
+package com.hoangkotlin.chatapp.data.local.message
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.hoangkotlin.chatapp.testdata.user.User
-import com.hoangkotlin.chatapp.testdata.channel.ChatChannel
+import com.hoangkotlin.chatapp.data.local.user.User
+import com.hoangkotlin.chatapp.data.local.channel.ChatChannel
 import com.hoangkotlin.chatapp.utils.SyncStatus
 
 @Entity(

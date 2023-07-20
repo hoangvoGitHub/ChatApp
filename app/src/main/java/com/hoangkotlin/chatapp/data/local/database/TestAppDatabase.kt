@@ -1,17 +1,17 @@
-package com.hoangkotlin.chatapp.testdata.database
+package com.hoangkotlin.chatapp.data.local.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.hoangkotlin.chatapp.testdata.user.UserDao
-import com.hoangkotlin.chatapp.testdata.channel.ChatChannel
-import com.hoangkotlin.chatapp.testdata.channel.ChatChannelDao
-import com.hoangkotlin.chatapp.testdata.membership.Membership
-import com.hoangkotlin.chatapp.testdata.membership.MembershipDao
-import com.hoangkotlin.chatapp.testdata.message.ChatMessage
-import com.hoangkotlin.chatapp.testdata.message.ChatMessageDao
-import com.hoangkotlin.chatapp.testdata.user.User
+import com.hoangkotlin.chatapp.data.local.user.UserDao
+import com.hoangkotlin.chatapp.data.local.channel.ChatChannel
+import com.hoangkotlin.chatapp.data.local.channel.ChatChannelDao
+import com.hoangkotlin.chatapp.data.local.membership.Membership
+import com.hoangkotlin.chatapp.data.local.membership.MembershipDao
+import com.hoangkotlin.chatapp.data.local.message.ChatMessage
+import com.hoangkotlin.chatapp.data.local.message.ChatMessageDao
+import com.hoangkotlin.chatapp.data.local.user.User
 
 @Database(
     entities = [User::class, ChatChannel::class, ChatMessage::class, Membership::class],
@@ -31,7 +31,7 @@ abstract class TestAppDatabase : RoomDatabase() {
 
         fun getDatabase(context: Context): TestAppDatabase {
             synchronized(TestAppDatabase::class.java) {
-                if (!::INSTANCE.isInitialized) {
+                if (!Companion::INSTANCE.isInitialized) {
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
                         TestAppDatabase::class.java,

@@ -12,17 +12,17 @@ import com.google.firebase.ktx.Firebase
 import com.hoangkotlin.chatapp.data.domain.DomainMessage
 import com.hoangkotlin.chatapp.data.model.*
 import com.hoangkotlin.chatapp.firebase.utils.RealtimeReference
-import com.hoangkotlin.chatapp.testdata.channel.ChatChannel
-import com.hoangkotlin.chatapp.testdata.database.TestAppDatabase
+import com.hoangkotlin.chatapp.data.local.channel.ChatChannel
+import com.hoangkotlin.chatapp.data.local.database.TestAppDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import com.hoangkotlin.chatapp.logindata.Result
 
-import com.hoangkotlin.chatapp.testdata.membership.Membership
-import com.hoangkotlin.chatapp.testdata.message.ChatMessage
-import com.hoangkotlin.chatapp.testdata.user.User
+import com.hoangkotlin.chatapp.data.local.membership.Membership
+import com.hoangkotlin.chatapp.data.local.message.ChatMessage
+import com.hoangkotlin.chatapp.data.local.user.User
 import com.hoangkotlin.chatapp.utils.SyncStatus
 import com.hoangkotlin.chatapp.utils.asDomainMessage
 import java.io.IOException

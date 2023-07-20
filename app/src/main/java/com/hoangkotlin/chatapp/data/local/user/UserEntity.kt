@@ -1,4 +1,4 @@
-package com.hoangkotlin.chatapp.testdata.user
+package com.hoangkotlin.chatapp.data.local.user
 
 import androidx.room.*
 

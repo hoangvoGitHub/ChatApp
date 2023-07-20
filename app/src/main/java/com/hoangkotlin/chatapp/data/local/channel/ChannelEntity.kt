@@ -1,8 +1,8 @@
-package com.hoangkotlin.chatapp.testdata.channel
+package com.hoangkotlin.chatapp.data.local.channel
 
 import androidx.room.*
-import com.hoangkotlin.chatapp.testdata.message.ChatMessage
-import com.hoangkotlin.chatapp.testdata.user.User
+import com.hoangkotlin.chatapp.data.local.message.ChatMessage
+import com.hoangkotlin.chatapp.data.local.user.User
 
 @Entity(
     tableName = CHANNEL_ENTITY_TABLE_NAME_TEST,

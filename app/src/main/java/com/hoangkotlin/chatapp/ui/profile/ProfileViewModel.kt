@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hoangkotlin.chatapp.ChatApplication
-import com.hoangkotlin.chatapp.testdata.user.User
+import com.hoangkotlin.chatapp.data.local.user.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

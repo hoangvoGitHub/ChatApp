@@ -1,4 +1,4 @@
-package com.hoangkotlin.chatapp.testdata.message
+package com.hoangkotlin.chatapp.data.local.message
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow

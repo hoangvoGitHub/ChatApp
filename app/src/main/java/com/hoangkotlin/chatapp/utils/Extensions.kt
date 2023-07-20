@@ -4,9 +4,9 @@ package com.hoangkotlin.chatapp.utils
 
 import com.hoangkotlin.chatapp.data.domain.DomainMessage
 import com.hoangkotlin.chatapp.data.model.MemberEntity
-import com.hoangkotlin.chatapp.testdata.user.User
+import com.hoangkotlin.chatapp.data.local.user.User
 import com.hoangkotlin.chatapp.logindata.model.LoggedInUser
-import com.hoangkotlin.chatapp.testdata.message.ChatMessage
+import com.hoangkotlin.chatapp.data.local.message.ChatMessage
 
 fun ChatMessage.asDomainMessage(): DomainMessage {
     return DomainMessage(
