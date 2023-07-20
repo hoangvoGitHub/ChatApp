@@ -8,7 +8,7 @@
     tools:context=".ui.profile.ProfileFragment">
 
     <TextView
-        android:id="@+id/text_gallery"
+        android:id="@+id/text_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -33,8 +33,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_gallery"
-        app:layout_constraintVertical_bias="0.181" />
+        app:layout_constraintTop_toBottomOf="@id/text_profile"
+        app:layout_constraintVertical_bias="0.181"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/test_button"
@@ -44,6 +45,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_gallery"/>
+        app:layout_constraintTop_toBottomOf="@id/text_profile"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

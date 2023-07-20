@@ -3,7 +3,7 @@ package com.hoangkotlin.chatapp.repository
 import android.util.Log
 import com.hoangkotlin.chatapp.firebase.FirebaseService
 import com.hoangkotlin.chatapp.data.local.channel.ChatChannel
-import com.hoangkotlin.chatapp.data.local.database.TestAppDatabase
+import com.hoangkotlin.chatapp.data.local.database.AppDatabase
 import com.hoangkotlin.chatapp.logindata.Result
 import com.hoangkotlin.chatapp.data.local.message.ChatMessage
 import com.hoangkotlin.chatapp.utils.asMessageEntity
@@ -11,7 +11,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 
 class MessageRepository(
-    private val database: TestAppDatabase,
+    private val database: AppDatabase,
     private val lifecycleScope: CoroutineScope
 ) {
 

@@ -1,8 +1,8 @@
 package com.hoangkotlin.chatapp
 
 import android.app.Application
-import com.hoangkotlin.chatapp.data.local.database.TestAppDatabase
+import com.hoangkotlin.chatapp.data.local.database.AppDatabase
 
 class ChatApplication : Application() {
-    val database: TestAppDatabase by lazy { TestAppDatabase.getDatabase(this) }
+    val database: AppDatabase by lazy { AppDatabase.getDatabase(this) }
 }

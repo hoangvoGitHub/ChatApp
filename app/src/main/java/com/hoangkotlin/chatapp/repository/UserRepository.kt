@@ -2,7 +2,7 @@ package com.hoangkotlin.chatapp.repository
 
 import android.util.Log
 import com.hoangkotlin.chatapp.firebase.FirebaseService
-import com.hoangkotlin.chatapp.data.local.database.TestAppDatabase
+import com.hoangkotlin.chatapp.data.local.database.AppDatabase
 import com.hoangkotlin.chatapp.data.local.user.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 class UserRepository(
-    private val database: TestAppDatabase,
+    private val database: AppDatabase,
     private val lifecycleScope: CoroutineScope
 ) {
 

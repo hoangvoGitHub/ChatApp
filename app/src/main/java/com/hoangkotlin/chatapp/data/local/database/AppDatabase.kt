@@ -18,7 +18,7 @@ import com.hoangkotlin.chatapp.data.local.user.User
     version = 1,
     exportSchema = false
 )
-abstract class TestAppDatabase : RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
     abstract fun chatUserDao(): UserDao
     abstract fun chatMessageDao(): ChatMessageDao
     abstract fun chatChannelDao(): ChatChannelDao
@@ -27,14 +27,14 @@ abstract class TestAppDatabase : RoomDatabase() {
 
     companion object {
 
-        private lateinit var INSTANCE: TestAppDatabase
+        private lateinit var INSTANCE: AppDatabase
 
-        fun getDatabase(context: Context): TestAppDatabase {
-            synchronized(TestAppDatabase::class.java) {
+        fun getDatabase(context: Context): AppDatabase {
+            synchronized(AppDatabase::class.java) {
                 if (!Companion::INSTANCE.isInitialized) {
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
-                        TestAppDatabase::class.java,
+                        AppDatabase::class.java,
                         "my_test_database"
                     ).build()
                 }

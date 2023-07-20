@@ -43,7 +43,7 @@ class ProfileFragment : Fragment() {
             Log.d("Profile Fragment", "Current User ${it.displayName}")
             profileViewModel.getUser(it.uid)
         }
-        val textView: TextView = binding.textGallery
+        val textView: TextView = binding.textProfile
         profileViewModel.user.observe(viewLifecycleOwner){
             textView.text = it.name
         }

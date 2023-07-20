@@ -13,7 +13,7 @@ import com.hoangkotlin.chatapp.data.domain.DomainMessage
 import com.hoangkotlin.chatapp.data.model.*
 import com.hoangkotlin.chatapp.firebase.utils.RealtimeReference
 import com.hoangkotlin.chatapp.data.local.channel.ChatChannel
-import com.hoangkotlin.chatapp.data.local.database.TestAppDatabase
+import com.hoangkotlin.chatapp.data.local.database.AppDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,7 +33,7 @@ class FirebaseService {
     companion object {
         private val database = Firebase.database
         fun fetchUserList(
-            localDatabase: TestAppDatabase,
+            localDatabase: AppDatabase,
             lifecycleScope: CoroutineScope,
             callback: suspend (List<User>) -> Unit
         ) {
